@@ -18,11 +18,14 @@ public class MainClass {
 		
 	private static List<Movie> movieList = new ArrayList<Movie>();
 	public static void main(String[] args) {
-		
-		try{
 		CreateMovieList("movie.data");
-		System.out.println(movieList.get(0).toString());
-		}catch(IndexOutOfBoundsException ex){}
+		int i=0;
+		//try{
+		while(i<100){
+			System.out.println(movieList.get(i).toString());
+			i++;
+		}
+		//}catch(IndexOutOfBoundsException ex){}
 	}
 	
 	

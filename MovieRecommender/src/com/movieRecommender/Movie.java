@@ -7,9 +7,8 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [name=" + name + ", year=" + year + ", genre="
-				+ genre.get(0) + "]";
-	}
+		return "Movie [name=" + name + ", year=" + year + ", genre="+ PrintGenre() + "]";
+		}
 
 	private String name;
 	private int year;
@@ -51,6 +50,18 @@ public class Movie {
 	}
 
 	
+	private String PrintGenre(){
+		int i=0;
+		String st="";
+		try{
+			for(i=0;i < genre.size()-1;i++){
+				st=st+Integer.toString(genre.get(i))+", ";
+			}
+		
+			st=st+Integer.toString(genre.get(i));
+		}catch(Exception ex){}
+		return st;
+	}
 	
 	
 	
