@@ -4,6 +4,7 @@
  */
 package com.movieRecommender;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,32 @@ public class MainClass {
 		
 	private static List<Movie> movieList = new ArrayList<Movie>();
 	public static void main(String[] args) {
-		CreateMovieList("ok");
 		
+		try{
+		CreateMovieList("movie.data");
 		System.out.println(movieList.get(0).toString());
+		}catch(IndexOutOfBoundsException ex){}
 	}
-	public static void CreateMovieList(String str){
-		movieList.add(new Movie(str));
+	
+	
+	
+	public static void CreateMovieList(String fileName){
+		String str="";
+		FileInputStream fin = null;
+		BufferedReader br=null;
+		
+		try{
+			fin = new FileInputStream(fileName);
+			br=new BufferedReader(new InputStreamReader(fin));
+			while((str=br.readLine())!=null){	
+			movieList.add(new Movie(str));
+			}
+			fin.close();
+			br.close();
+		}catch(IOException ioEx){}
+		
 	}
+	
+	
 	
 }
