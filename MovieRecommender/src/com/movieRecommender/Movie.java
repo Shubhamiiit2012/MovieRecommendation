@@ -54,11 +54,12 @@ public class Movie {
 		int i=0;
 		String st="";
 		try{
-			for(i=0;i < genre.size()-1;i++){
+			for(i=0;i <=genre.size()-1;i++){
 				st=st+Integer.toString(genre.get(i))+", ";
 			}
 		
-			st=st+Integer.toString(genre.get(i));
+			st=st+Integer.toString(genre.get(i+1));
+			
 		}catch(Exception ex){}
 		return st;
 	}
@@ -77,8 +78,21 @@ public class Movie {
 		return ratingList;
 	}
 
-	protected void setRatingList(List<Ratings> ratingList) {
-		this.ratingList = ratingList;
+	protected void setRating(Ratings rating) {
+		ratingList.add(rating);
+	}
+	protected float avgRating(){
+		if(ratingList.size() == 0)
+			return 0;
+		int sum=0;
+		int count=0;
+		while( count < ratingList.size() ) {
+			sum=sum+ratingList.get(count).getRateValue();
+			count++;
+		}
+		count=count+1;
+		return (float)sum/count;
+		
 	}
 
 }
