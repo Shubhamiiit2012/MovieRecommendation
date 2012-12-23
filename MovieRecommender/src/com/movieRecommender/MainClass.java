@@ -8,9 +8,11 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Step 1. Create the classes of nouns i.e. Ratings, Movie, User. Step 2. Parse
- * the files. Step 3. Create objects of all the nouns by inserting appropriate
- * value from parsed data. Step 4.
+ * Step 1. Create the classes of nouns i.e. Ratings, Movie, User. 
+ * Step 2. Parse
+ * the files. 
+ * Step 3. Create objects of all the nouns by inserting appropriate value from parsed data. 
+ * Step 4.
  * 
  */
 
@@ -86,7 +88,7 @@ public class MainClass {
 				// System.out.println(ratingObject.toString()+Integer.valueOf(token[1]));
 				int x = Integer.valueOf(token[1]) - 1;
 
-				// System.out.println(movieList.get((Integer.valueOf(token[1]))-1).toString());
+				System.out.println(movieList.get((Integer.valueOf(token[1]))-1).toString());
 
 			}
 		} catch (Exception e) {

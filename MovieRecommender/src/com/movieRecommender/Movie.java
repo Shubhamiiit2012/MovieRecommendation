@@ -1,14 +1,20 @@
+/**
+ * This class has structure of movie Object.
+ * The object is created by parsing the file movie.data 
+ * It has attributes name, year, genre List, Rating List.
+ * It has constructor which initialises values by parsing.
+ * Parsing of single line is done.
+ * Then useful data is extracted from single line read.
+ */
 package com.movieRecommender;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie implements ParsingInterface {
 
-	@Override
-	public String toString() {
-		return "Movie [name=" + name + ", year=" + year + ", genre="+ PrintGenre() + "]";
-		}
+	
 
 	private String name;
 	private int year;
@@ -16,6 +22,18 @@ public class Movie {
 	private List<Integer> genre = new ArrayList<Integer>();
 	public int ratingListLength=0;
 
+	
+	@Override
+	public String toString() {
+		try {
+			return "Movie [name=" + name + ", year=" + year + ", genre="+ PrintGenre() + "]";
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	//Constructor initializes name, year, genre.
 	public Movie(String str) {
 		String st[]=str.split("[|()]+");
 		List<String> tkn= ParseString(st);
@@ -31,6 +49,7 @@ public class Movie {
 		}catch(Exception ex){}
 	}
 
+	//Not working
 	public float GetAverageRating(){
 		int sum=0;
 		int count=0;
@@ -44,6 +63,7 @@ public class Movie {
 		return 0;
 	}
 	
+	//Parses the string and extracts useful information.
 	public List<String> ParseString(String[] tkn) {
 
 		List<String> list=new ArrayList<String>();
@@ -62,23 +82,23 @@ public class Movie {
 		 return list;
 	}
 
-	
-	private String PrintGenre(){
+	//Returns string of concatenated genre.
+	private String PrintGenre() throws IOException{
 		int i=0;
 		String st="";
 		try{
 			for(i=0;i <=genre.size()-1;i++){
-				st=st+Integer.toString(genre.get(i))+", ";
+				st=st+Integer.toString(genre.get(i))+" ";
 			}
 		
 			st=st+Integer.toString(genre.get(i+1));
 			
 		}catch(Exception ex){}
-		return st;
+		return Genre.getActualValue(st);
 	}
 	
 	
-	
+	//Getters and setters.
 	protected String getName() {
 		return name;
 	}

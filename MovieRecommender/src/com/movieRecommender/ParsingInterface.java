@@ -1,6 +1,8 @@
 package com.movieRecommender;
 
+import java.util.List;
+
 public interface ParsingInterface {
-	public String[] ParseString(String str);
+	public List<String> ParseString(String[] tkn);
 
 }
