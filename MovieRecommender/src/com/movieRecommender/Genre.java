@@ -1,5 +1,5 @@
 /**
- * This class contains the method which parses genre.data and converts genre index to Actual values.
+ * This class contains the method which parses genre.data and converts genre index to Actual genre values.
  */
 package com.movieRecommender;
 
@@ -16,7 +16,6 @@ public class Genre {
 		FileInputStream fin = null;
 		BufferedReader br = null;
 		String intStringToken[]=string.split("[ ]+");
-		//System.out.println(intStringToken[1]);
 		String toReturn="";
 		int k=0;
 		try {
