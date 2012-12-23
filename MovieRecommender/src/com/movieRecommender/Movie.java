@@ -14,6 +14,7 @@ public class Movie {
 	private int year;
 	private List<Ratings> ratingList;
 	private List<Integer> genre = new ArrayList<Integer>();
+	public int ratingListLength=0;
 
 	public Movie(String str) {
 		String st[]=str.split("[|()]+");
@@ -30,6 +31,18 @@ public class Movie {
 		}catch(Exception ex){}
 	}
 
+	public float GetAverageRating(){
+		int sum=0;
+		int count=0;
+		//try{
+		if(ratingListLength!=0){
+		while(count<ratingListLength){
+			sum=sum+ratingList.get(count).getRateValue();
+			count++;
+		}
+		return (float)sum/count;}//}catch(Exception ex){}
+		return 0;
+	}
 	
 	public List<String> ParseString(String[] tkn) {
 
@@ -78,8 +91,9 @@ public class Movie {
 		return ratingList;
 	}
 
-	protected void setRating(Ratings rating) {
+	public void setRating(Ratings rating) {
 		ratingList.add(rating);
+		ratingListLength++;
 	}
 	protected float avgRating(){
 		if(ratingList.size() == 0)
