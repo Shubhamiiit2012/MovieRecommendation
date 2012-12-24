@@ -21,7 +21,8 @@ public class MainClass {
 	private static List<Movie> movieList = new ArrayList<Movie>();
 	private static int ratedMovieNum[] = new int[1682];
 	private static HashMap<Integer, String> ratingRecord = new HashMap<Integer, String>();
-	private static float[] avgRatingRecord = new float[1682]; 
+	private static float[] avgRatingRecord = new float[1682];
+
 	// private static Map<Integer, List<Ratings>> movieRatings = new
 	// HashMap<Integer, List<Ratings>>();
 
@@ -37,16 +38,17 @@ public class MainClass {
 	}
 
 	private static void FindHighestRatedMovie() {
-		float maxRate=0;
-		int maxRateIndex=0;
-		for(int currentIndex=0; currentIndex < 1682; currentIndex++)
-			if(avgRatingRecord[currentIndex]>maxRate){
-				maxRate=avgRatingRecord[currentIndex];
-				maxRateIndex=currentIndex;
+		float maxRate = 0;
+		int maxRateIndex = 0;
+		for (int currentIndex = 0; currentIndex < 1682; currentIndex++)
+			if (avgRatingRecord[currentIndex] > maxRate) {
+				maxRate = avgRatingRecord[currentIndex];
+				maxRateIndex = currentIndex;
 			}
-		System.out.println("\n\nHighest Rated Movie : \n"+ "Movie ID = "+(maxRateIndex+1)+ " Rating = "+maxRate+"\n"+movieList.get(maxRateIndex).toString());
-		
-		
+		System.out.println("\n\nHighest Rated Movie : \n" + "Movie ID = "
+				+ (maxRateIndex + 1) + " Rating = " + maxRate + "\n"
+				+ movieList.get(maxRateIndex).toString());
+
 	}
 
 	private static void CreateMovieRateList(String string) {
@@ -93,16 +95,17 @@ public class MainClass {
 					int x = Integer.valueOf(token[0]);
 					int y = Integer.valueOf(token[1]);
 					avg = (float) y / x;
-					avgRatingRecord[i]=avg;
+					avgRatingRecord[i] = avg;
 					System.out.println("Movie id = " + (i + 1) + " "
 							+ movieList.get(i).toString());
-					System.out.println("Average rating = " + " is " + avgRatingRecord[i]);
+					System.out.println("Average rating = " + " is "
+							+ avgRatingRecord[i]);
 				}
 			}
 
 		} catch (Exception ex) {
 		}
-		
+
 	}
 
 	// Prints Highest Rated Movie....
@@ -166,11 +169,13 @@ public class MainClass {
 
 				Ratings ratingObject = new Ratings(Integer.valueOf(token[0]),
 						Integer.valueOf(token[2]));
-				// System.out.println(ratingObject.toString());
-				int x = Integer.valueOf(token[1]) - 1;
-
-				// System.out.println("Movie Id = " + (x + 1) + "  "+
-				// movieList.get(x).toString());
+				/*
+				 * System.out.println(ratingObject.toString()); int x =
+				 * Integer.valueOf(token[1]) - 1;
+				 * 
+				 * System.out.println("Movie Id = " + (x + 1) + "  "+
+				 * movieList.get(x).toString());
+				 */
 
 			}
 
