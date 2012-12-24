@@ -21,18 +21,32 @@ public class MainClass {
 	private static List<Movie> movieList = new ArrayList<Movie>();
 	private static int ratedMovieNum[] = new int[1682];
 	private static HashMap<Integer, String> ratingRecord = new HashMap<Integer, String>();
-
+	private static float[] avgRatingRecord = new float[1682]; 
 	// private static Map<Integer, List<Ratings>> movieRatings = new
 	// HashMap<Integer, List<Ratings>>();
 
 	public static void main(String[] args) {
 
 		CreateMovieList("movie.data");
-		CreateRatingListInMovie("ratings.data");
-		FindHighestRatedMovie("ratings.data");
 		CreateMovieRateList("ratings.data");
-		FindHighestAvgRatedMovie();
+		CreateRatingListInMovie("ratings.data");
+		CalculateAvgRateOfMovie();
+		FindMostWatchedMovie("ratings.data");
+		FindHighestRatedMovie();
 
+	}
+
+	private static void FindHighestRatedMovie() {
+		float maxRate=0;
+		int maxRateIndex=0;
+		for(int currentIndex=0; currentIndex < 1682; currentIndex++)
+			if(avgRatingRecord[currentIndex]>maxRate){
+				maxRate=avgRatingRecord[currentIndex];
+				maxRateIndex=currentIndex;
+			}
+		System.out.println("\n\nHighest Rated Movie : \n"+ "Movie ID = "+(maxRateIndex+1)+ " Rating = "+maxRate+"\n"+movieList.get(maxRateIndex).toString());
+		
+		
 	}
 
 	private static void CreateMovieRateList(String string) {
@@ -69,7 +83,7 @@ public class MainClass {
 		}
 	}
 
-	private static void FindHighestAvgRatedMovie() {
+	private static void CalculateAvgRateOfMovie() {
 		float avg = 0;
 		try {
 			for (int i = 0; i < 1682; i++) {
@@ -79,19 +93,20 @@ public class MainClass {
 					int x = Integer.valueOf(token[0]);
 					int y = Integer.valueOf(token[1]);
 					avg = (float) y / x;
+					avgRatingRecord[i]=avg;
 					System.out.println("Movie id = " + (i + 1) + " "
 							+ movieList.get(i).toString());
-					System.out.println("Average rating = " + " is " + avg);
+					System.out.println("Average rating = " + " is " + avgRatingRecord[i]);
 				}
 			}
 
 		} catch (Exception ex) {
 		}
-
+		
 	}
 
 	// Prints Highest Rated Movie....
-	private static void FindHighestRatedMovie(String string) {
+	private static void FindMostWatchedMovie(String string) {
 
 		int i = 0;
 		String str = "";
@@ -128,9 +143,9 @@ public class MainClass {
 
 		}
 
-		System.out.println("\n\nMost watched Movie is :");
+		System.out.println("\n\n\nMost watched Movie is :");
 		System.out.println(movieList.get(index).toString());
-		System.out.println("Number of Ratings = " + rate + "\n\n");
+		System.out.println("Number of times Watched = " + rate + "\n\n");
 
 	}
 
